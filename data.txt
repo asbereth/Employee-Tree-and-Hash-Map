@@ -1,0 +1,9 @@
+Galileo, Susanto
+Muller, Einstein
+Plato, Galileo
+Socrates, Galileo
+Susanto, -
+Jack, Einstein
+Einstein, Susanto
+Feynmann, Einstein
+Euler, Susanto
