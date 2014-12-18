@@ -30,10 +30,9 @@ public class IOStuff {
     return lines;
   }
   
-  static public void printTree(HashMap<String, String[]> tree) {
+  static public void printTree(HashMap<String, ArrayList<String>> tree) {
     for (String employee : tree.keySet() ) {
-      System.out.println(employee + ": " +  
-	Arrays.toString(tree.get(employee) ));
+      System.out.println(employee + ": " + tree.get(employee) );
     }
     
   }

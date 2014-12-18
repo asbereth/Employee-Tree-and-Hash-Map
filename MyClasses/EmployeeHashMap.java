@@ -6,7 +6,9 @@ public class EmployeeHashMap extends HashMap<String, String> {
   
   @Override public String put (String key, String value) {
     if (containsKey(key)) {
-      throw new Error("not valid, an employee can't have two managers");
+      if (!get(key).equals(value)) {
+	throw new Error("not valid, an employee can't have two managers");
+      }
     }
     
     if (containsKey(value) ) {
@@ -22,19 +24,8 @@ public class EmployeeHashMap extends HashMap<String, String> {
     return super.put(key, value);
   }
   
-  public String[] computeSubordinates (String employeeName) {
+  public ArrayList<String> computeSubordinates (String employeeName) {
     ArrayList<String> listOfSubordinates = new ArrayList<String>();
-    
-    if (this.containsKey(employeeName) && 
-	!this.containsValue(employeeName)) {
-      System.out.println(employeeName + " does not have subordinates");
-      return null;
-    }
-    
-    if (!this.containsKey(employeeName)) {
-      System.out.println(employeeName + " doesn't exist");
-      return null;
-    }
     
     for (String key : this.keySet()) {
       if (this.get(key).equals(employeeName)) {
@@ -42,9 +33,7 @@ public class EmployeeHashMap extends HashMap<String, String> {
       }
     }
     
-    String[] finalArray = new String[listOfSubordinates.size()];
-    
-    return listOfSubordinates.toArray(finalArray);
+    return listOfSubordinates;
   }
   
 }

@@ -18,8 +18,8 @@ public class testEmployeeHashMap {
       throw new Error("some issue with the file");
     }
     
-    HashMap<String, String[]> employeeTree = 
-      new HashMap<String, String[]>();
+    HashMap<String, ArrayList<String>> employeeTree = 
+      new HashMap<String, ArrayList<String>>();
     
     
     for (int k = 0; k < test.length; ++k) {      
@@ -39,12 +39,13 @@ public class testEmployeeHashMap {
       }
     }
     
+    
     for (String key : employeeMapping.keySet() ) {
       if (!employeeTree.containsKey(employeeMapping.get(key) ) && 
-	  !employeeMapping.get(key).equals("-") ) {
-	employeeTree.put(employeeMapping.get(key), 
-			 employeeMapping.computeSubordinates( 
-			   employeeMapping.get(key)));
+    	  !employeeMapping.get(key).equals("-") ) {
+    	employeeTree.put(employeeMapping.get(key), 
+    			 employeeMapping.computeSubordinates( 
+    			   employeeMapping.get(key)));
       }
       
     }
