@@ -14,6 +14,10 @@ public class EmployeeTree {
     return employeeName;
   }
   
+  public void setEmployeeName(String name) {
+    this.employeeName = name;
+  }
+  
   public ArrayList<EmployeeTree> getChildren() {
     return children;
   }
@@ -34,7 +38,7 @@ public class EmployeeTree {
   // insertNode() and insertChildren() are mutually recursive
   private void insertNode(EmployeeHashMap employeeMapping, 
     String name) {
-    this.employeeName = name;
+    this.setEmployeeName(name);
     insertChildren(employeeMapping, name);
   }
   
@@ -60,13 +64,14 @@ public class EmployeeTree {
   // recursive, traversing a depth-first tree algorithm
   public void printTree() {
     if (!children.isEmpty()) {
-      System.out.println(this.employeeName + ": " + this.children);
+      System.out.println(this.getEmployeeName() + ": " + 
+	this.getChildren());
       printChildren();
     }
   }
   
   private void printChildren() {
-    for (EmployeeTree child: this.children)
+    for (EmployeeTree child: this.getChildren())
       child.printTree();
   }
   
