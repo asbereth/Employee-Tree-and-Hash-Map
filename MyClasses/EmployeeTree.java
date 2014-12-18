@@ -1,20 +1,14 @@
-package MyClasses;
+// This class is designed to hold a managerial hierarchy within a 
+// tree structure. A node consists of an employee name, and the 
+// list of the names of that employee's subordinates. 
 
+package MyClasses;
 import java.util.*;
 
 public class EmployeeTree {
   
-  // EmployeeHashMap employeeMapping = new EmployeeHashMap();
-  
   String employeeName;
   ArrayList<EmployeeTree> children = new ArrayList<EmployeeTree>();
-  
-  
-  // constructor
-  // public EmployeeTree (String name) {
-  //   this.employeeName = name;
-  //   this.children = new ArrayList<EmployeeTree>();
-  // }
   
   public String getEmployeeName() {
     return employeeName;
@@ -29,18 +23,7 @@ public class EmployeeTree {
   }
   
   private String getCEO(EmployeeHashMap employeeMapping) {
-    String CEO = new String();
-    if (!employeeMapping.containsValue("-") ) {
-      throw new Error("you must have a CEO");
-    } else {
-      for (String check : employeeMapping.keySet() ) {
-	if (employeeMapping.get(check).equals("-")) {
-	  CEO = check;
-	  break;
-	}
-      }
-    }
-    return CEO;
+    return employeeMapping.getCEO();
   }
   
   public void buildTree(EmployeeHashMap employeeMapping) {
@@ -69,12 +52,12 @@ public class EmployeeTree {
   }
   
   public ArrayList<String> findChildren(EmployeeHashMap employeeMapping, 
-    String parentName) {
-    
+    String parentName) {    
     return employeeMapping.computeSubordinates(parentName);
   }
   
-  
+  // printTree() and printChildren() are defined to be mutually 
+  // recursive, traversing a depth-first tree algorithm
   public void printTree() {
     if (!children.isEmpty()) {
       System.out.println(this.employeeName + ": " + this.children);

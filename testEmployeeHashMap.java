@@ -1,5 +1,4 @@
 import java.util.*;
-
 import MyClasses.*;
 
 public class testEmployeeHashMap {
@@ -23,18 +22,7 @@ public class testEmployeeHashMap {
     	test[k].replaceAll(" ","").split(",")[1]);
     }
     
-    if (!employeeMapping.containsValue("-") ) {
-      throw new Error("you must have a CEO");
-    } else {
-      for (String check : employeeMapping.keySet() ) {
-	if (employeeMapping.get(check).equals("-")) {
-	  CEO = check;
-	  break;
-	}
-      }
-    }
-    
-    employeeMapping.printParent(CEO);
+    employeeMapping.printTree();
     
   }
 }

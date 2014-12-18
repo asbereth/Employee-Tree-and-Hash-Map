@@ -1,5 +1,12 @@
-package MyClasses;
+// This class is designed to read in the parsed information from the 
+// text file. EmployeeHashMap is basically a HashMap where both the 
+// key and value are of String type. The method put() has been 
+// overriden to ensure that each key is unique (since a key represents 
+// an employee, and an employee cannot have more than one superiors, 
+// and also to ensure that there are no cycles in the data, since the 
+// data will later on be converted onto a tree structure. 
 
+package MyClasses;
 import java.util.*;
 
 public class EmployeeHashMap extends HashMap<String, String> {
@@ -24,6 +31,21 @@ public class EmployeeHashMap extends HashMap<String, String> {
     return super.put(key, value);
   }
   
+  public String getCEO() {
+    String CEO = new String();
+    if (!this.containsValue("-") ) {
+      throw new Error("you must have a CEO");
+    } else {
+      for (String check : this.keySet() ) {
+	if (this.get(check).equals("-")) {
+	  CEO = check;
+	  break;
+	}
+      }
+    }
+    return CEO;
+  }
+  
   public ArrayList<String> computeSubordinates (String employeeName) {
     ArrayList<String> listOfSubordinates = new ArrayList<String>();
     
@@ -36,7 +58,11 @@ public class EmployeeHashMap extends HashMap<String, String> {
     return listOfSubordinates;
   }
 
-  public void printParent(String parentName) {
+  public void printTree() {
+    printParent(getCEO());
+  }
+  
+  private void printParent(String parentName) {
     if (!computeSubordinates(parentName).isEmpty()) {
       System.out.println(parentName + ": " + computeSubordinates(parentName) );
       printChildren(parentName);
