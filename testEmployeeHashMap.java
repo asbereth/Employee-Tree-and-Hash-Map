@@ -17,10 +17,6 @@ public class testEmployeeHashMap {
       throw new Error("some issue with the file");
     }
     
-    HashMap<String, ArrayList<String>> employeeTree = 
-      new HashMap<String, ArrayList<String>>();
-    
-    
     for (int k = 0; k < test.length; ++k) {      
       employeeMapping.put(
     	test[k].replaceAll(" ","").split(",")[0], 
@@ -38,19 +34,7 @@ public class testEmployeeHashMap {
       }
     }
     
-    
-    for (String key : employeeMapping.keySet() ) {
-      if (!employeeTree.containsKey(employeeMapping.get(key) ) && 
-    	  !employeeMapping.get(key).equals("-") ) {
-    	employeeTree.put(employeeMapping.get(key), 
-    			 employeeMapping.computeSubordinates( 
-    			   employeeMapping.get(key)));
-      }
-      
-    }
-    
-    IOStuff.printTree(employeeTree);
-    // System.out.println(employeeTree);
+    employeeMapping.printParent(CEO);
     
   }
 }

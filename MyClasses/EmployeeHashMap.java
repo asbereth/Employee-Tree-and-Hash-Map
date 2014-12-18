@@ -35,6 +35,19 @@ public class EmployeeHashMap extends HashMap<String, String> {
     
     return listOfSubordinates;
   }
+
+  public void printParent(String parentName) {
+    if (!computeSubordinates(parentName).isEmpty()) {
+      System.out.println(parentName + ": " + computeSubordinates(parentName) );
+      printChildren(parentName);
+    }
+  }
+  
+  private void printChildren(String parentName) {
+    for (String child: computeSubordinates(parentName)) {
+      printParent(child);
+    } 
+  }
   
 }
 
