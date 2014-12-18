@@ -6,3 +6,6 @@ Jack, Einstein
 Einstein, Susanto
 Feynmann, Einstein
 Euler, Susanto
+Maxwell, Euler
+Kaku, Feynmann
+Dawkins, Feynmann

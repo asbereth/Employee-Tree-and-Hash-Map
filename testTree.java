@@ -8,7 +8,7 @@ import java.util.*;
 
 import MyClasses.*;
 
-public class testTree {
+class IOStuff {
   static public String[] convertLineByLine (String filename) throws Exception{
     File file = new File(filename);
     FileReader fileReader = new FileReader(file);
@@ -28,18 +28,32 @@ public class testTree {
     return lines;
   }
   
-  static public void main(String[] arguments) {
-    String test[];
+  static public void printTree(HashMap<String, String[]> tree) {
+    for (String employee : tree.keySet() ) {
+      System.out.println(employee + ": " +  Arrays.toString(tree.get(employee) ) ) ;
+    }
     
-    EmployeeHashMap<String, String> employeeMapping = 
-      new EmployeeHashMap<String, String>();
+  }
+}
+
+public class testTree {
+  
+  static public void main(String[] arguments) {
+    String test[], CEO = new String();
+    
+    EmployeeHashMap employeeMapping = 
+      new EmployeeHashMap();
     
     try {
-      test = convertLineByLine("data.txt");
+      test = IOStuff.convertLineByLine("data.txt");
     }
     catch (Exception exception) {
       throw new Error("don't troll");
     }
+    
+    HashMap<String, String[]> employeeTree = 
+      new HashMap<String, String[]>();
+    
     
     for (int k = 0; k < test.length; ++k) {      
       employeeMapping.put(
@@ -47,7 +61,29 @@ public class testTree {
     	test[k].replaceAll(" ","").split(",")[1]);
     }
     
-    System.out.println(employeeMapping);
+    if (!employeeMapping.containsValue("-") ) {
+      throw new Error("you must have a CEO");
+    } else {
+      for (String check : employeeMapping.keySet() ) {
+	if (employeeMapping.get(check).equals("-")) {
+	  CEO = check;
+	  break;
+	}
+      }
+    }
+    
+    for (String key : employeeMapping.keySet() ) {
+      if (!employeeTree.containsKey(employeeMapping.get(key) ) && 
+	  !employeeMapping.get(key).equals("-") ) {
+	employeeTree.put(employeeMapping.get(key), 
+			 employeeMapping.computeSubordinates( employeeMapping.get(key)));
+      }
+      
+    }
+    
+    IOStuff.printTree(employeeTree);
+    // System.out.println(employeeTree);
+    
   }
 }
 
