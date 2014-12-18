@@ -70,14 +70,8 @@ public class EmployeeTree {
   
   public ArrayList<String> findChildren(EmployeeHashMap employeeMapping, 
     String parentName) {
-    ArrayList<String> listOfChildren = new ArrayList<String>();
     
-    for (String key: employeeMapping.keySet()) {
-      if(employeeMapping.get(key).equals(parentName)) {
-	listOfChildren.add(key);
-      }
-    }
-    return listOfChildren;
+    return employeeMapping.computeSubordinates(parentName);
   }
   
   
