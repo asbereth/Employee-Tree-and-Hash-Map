@@ -36,7 +36,7 @@ class IOStuff {
   }
 }
 
-public class testTree {
+public class testEmployeeHashMap {
   
   static public void main(String[] arguments) {
     String test[], CEO = new String();
