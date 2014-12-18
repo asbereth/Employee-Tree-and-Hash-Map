@@ -1,0 +1,21 @@
+Solutions to print out managerial hierarchy. 
+
+I provided two different ways to approach the problem: 
+1. Purely through HashMap
+2. A combination of tree and HashMap
+
+Several assumptions are made with regards to the input file, which are as follows: 1
+1. The file is divided onto lines
+2. Each line will not be empty, and will always contain two names, separated by commas
+3. Each name will be one word and contains no space
+4. The relationship is always between the superior (whose name comes after comma), 
+   and the subordinate of the said superior (name comes before comma)
+
+Two classes are defined here: 
+1. EmployeeHashMap: an extension of HashMap<String, String>, ensures that the put 
+   method will throw an error if an attempt is made to replace the value associated 
+   with a particular existing key. This implies that an employee has more than two 
+   supervisors
+2. EmployeeTree: a simple tree class which has a String as the value for each node, 
+   and it contains references to a list for the children nodes
+
