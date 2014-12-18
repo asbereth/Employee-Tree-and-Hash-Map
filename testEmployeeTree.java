@@ -12,7 +12,7 @@ public class testEmployeeTree {
     try {
       test = IOStuff.convertLineByLine("data.txt");
     } catch (Exception exception) {
-      throw new Exception ("don't troll");
+      throw new Exception ("some issues with the file");
     }
     
     for (int k = 0; k < test.length; ++k) {
