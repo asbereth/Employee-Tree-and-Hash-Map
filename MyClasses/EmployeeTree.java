@@ -9,6 +9,7 @@ public class EmployeeTree {
   String employeeName;
   ArrayList<EmployeeTree> children = new ArrayList<EmployeeTree>();
   
+  
   // constructor
   // public EmployeeTree (String name) {
   //   this.employeeName = name;
@@ -47,6 +48,7 @@ public class EmployeeTree {
       getCEO(employeeMapping));
   }
   
+  // insertNode() and insertChildren() are mutually recursive
   private void insertNode(EmployeeHashMap employeeMapping, 
     String name) {
     this.employeeName = name;
@@ -78,5 +80,17 @@ public class EmployeeTree {
     return listOfChildren;
   }
   
+  
+  public void printTree() {
+    if (!children.isEmpty()) {
+      System.out.println(this.employeeName + ": " + this.children);
+      printChildren();
+    }
+  }
+  
+  private void printChildren() {
+    for (EmployeeTree child: this.children)
+      child.printTree();
+  }
   
 }

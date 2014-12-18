@@ -22,10 +22,7 @@ public class testEmployeeTree {
     }
     
     tree.buildTree(employeeMapping);
-    System.out.println(tree.getEmployeeName());
-    System.out.println(tree.getChildren());
+    tree.printTree();
     
-    
-    // System.out.println(employeeMapping);
   }
 }
