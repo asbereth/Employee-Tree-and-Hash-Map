@@ -15,7 +15,7 @@ public class testEmployeeHashMap {
       test = IOStuff.convertLineByLine("data.txt");
     }
     catch (Exception exception) {
-      throw new Error("don't troll");
+      throw new Error("some issue with the file");
     }
     
     HashMap<String, String[]> employeeTree = 
