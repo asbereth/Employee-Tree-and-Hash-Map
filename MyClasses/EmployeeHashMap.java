@@ -18,7 +18,7 @@ public class EmployeeHashMap extends HashMap<String, String> {
     }
     
     if (value.equals("-") && containsValue("-") ) {
-      throw new Error("Can't only have one CEO");
+      throw new Error("can only have one CEO");
     }
     
     return super.put(key, value);
